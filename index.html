@@ -28,18 +28,22 @@
             const MODEL_TYPE = {
                 SUV: 'SUV_CollideMeshes',
             };
-            var objectLoader = new THREE.ObjectLoader();
-            objectLoader.load('model/suv.json', function (obj) {
-                                  car = obj;
-                                  scene.add(obj);
-                                  render()
-                                  sendMessageToNative({type: 'READY_TO_RENDER'});
-                });
+
 
             init();
 
 
             function init() {
+
+                var objectLoader = new THREE.ObjectLoader();
+            objectLoader.load('model/suv.json', function (obj) {
+                                  car = obj;
+                                  scene.add(obj);
+                                  render()
+                                  isWeb = 0
+                                  sendMessageToNative({type: 'READY_TO_RENDER'});
+                });
+
                 WIDTH = window.innerWidth;
                 HEIGHT = window.innerHeight;
                 isWeb = 0;
